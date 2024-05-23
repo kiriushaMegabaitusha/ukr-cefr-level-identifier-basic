@@ -1,5 +1,5 @@
 import pandas as pd
-from tokenize_uk import 
+from tokenize_uk.tokenize_uk import tokenize_words, tokenize_sents
 import pymorphy2
 
 morph = pymorphy2.MorphAnalyzer(lang='uk')
