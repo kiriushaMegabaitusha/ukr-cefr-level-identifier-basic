@@ -30,7 +30,7 @@ def count_ukr_syllables(text):
 
 def create_word_table(text):
     '''
-
+    creates a word table from a given text string
     :param text:
     :return: df containing all tokens from text and their linguistic text parameters
     '''
