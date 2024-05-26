@@ -11,7 +11,7 @@ def check_grammemes_level(grammemes):
     '''
     Get highest available CEFR level based on grammar indices
     :param grammemes: string containing morhpological categories in pymorphy2 format
-    :return: string signifying highest available CEFR level
+    :return: integer, the highest available CEFR level based on grammar indices
     '''
     if grammemes in grammemes_dict['C2']:
         return 1
