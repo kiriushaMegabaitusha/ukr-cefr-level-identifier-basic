@@ -27,6 +27,11 @@ def check_grammemes_level(grammemes):
         return 6
 
 def interpret_cefr_list(level_list):
+    '''
+    create a dictionary of max, average and mode interpretations of level lists
+    :param level_list: list of level indices converted to integer values
+    :return: dictionary of max, average and mode interpretations
+    '''
     interpretation_list = {
         'max': str(),
         'mode': str(),
