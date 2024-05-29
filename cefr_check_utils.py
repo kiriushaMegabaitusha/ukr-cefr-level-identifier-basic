@@ -100,26 +100,58 @@ lemmas_dict = {
 }
 
 #define the level of the grammemes
-de[check_grammemes_level(grammemes):
+def check_grammemes_level(df):
     '''
-    Get highest available CEFR level based on grammar indices
-    :param grammemes: string containing morhpological categories in pymorphy2 format
-    :return: integer, the highest available CEFR level based on grammar indices
+    calculate cefr levels for each word in the word table.
+    :param df: DataFrame, word table
+    :return: DataFrame, word table with cefr_level column
     '''
-    if grammemes in grammemes_dict['C2']:
-        return 1
-    elif grammemes in grammemes_dict['C1']:
-        return 2
-    elif grammemes in grammemes_dict['B2']:
-        return 3
-    elif grammemes in grammemes_dict['B1']:
-        return 4
-    elif grammemes in grammemes_dict['A2']:
-        return 5
-    elif grammemes in grammemes_dict['A1']:
-        return 6
-    else:
-        return 0
+    level_list = []
+    for index in df.index:
+        temp_level_list = []
+        #check grammemes level
+        for grammeme in grammemes_dict['A1']:
+            if grammeme in df['grammeme'][index]:
+                temp_level_list.append(1)
+        for grammeme in grammemes_dict['A2']:
+            if grammeme in df['grammeme'][index]:
+                temp_level_list.append(2)
+        for grammeme in grammemes_dict['B1']:
+            if grammeme in df['grammeme'][index]:
+                temp_level_list.append(3)
+        for grammeme in grammemes_dict['B2']:
+            if grammeme in df['grammeme'][index]:
+                temp_level_list.append(4)
+        for grammeme in grammemes_dict['C1']:
+            if grammeme in df['grammeme'][index]:
+                temp_level_list.append(5)
+        for grammeme in grammemes_dict['C2']:
+            if grammeme in df['grammeme'][index]:
+                temp_level_list.append(6)
+        # check lemmas level
+        for lemma in lemmas_dict['A2']:
+            if df['lemma'][index] == lemma:
+                temp_level_list.append(2)
+        for lemma in lemmas_dict['B1']:
+            if df['lemma'][index] == lemma:
+                temp_level_list.append(3)
+        for lemma in lemmas_dict['B2']:
+            if df['lemma'][index] == lemma:
+                temp_level_list.append(4)
+        for lemma in lemmas_dict['C1']:
+            if df['lemma'][index] == lemma:
+                temp_level_list.append(5)
+        for lemma in lemmas_dict['C2']:
+            if df['lemma'][index] == lemma:
+                temp_level_list.append(6)
+        # check if no levels were found
+        if not temp_level_list:
+            temp_level_list.append(0)
+        # append token level
+        level_list.append(min(temp_level_list))
+    return df.assign(cefr_level=level_list)
+
+
 
 def interpret_cefr_list(level_list):
     '''
@@ -136,3 +168,4 @@ def interpret_cefr_list(level_list):
     interpretation_list['mode'] = max(level_list, key=level_list.count)
     interpretation_list['avg'] = round(sum(level_list) / len(level_list))
     return interpretation_list
+

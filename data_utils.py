@@ -36,15 +36,15 @@ def create_word_table(text):
     '''
     tokens = tokenize_words(text)
     # get gramemes, lemmas, lengths, syllable count
-    grameme_list = []
+    grammeme_list = []
     lemma_list = []
     word_len_list = []
     syllable_count_list = []
     for token in tqdm(tokens, desc='Creating word table'):
-        grameme_list.append(morph.parse(token)[0].tag)
+        grammeme_list.append(morph.parse(token)[0].tag)
         lemma_list.append(morph.parse(token)[0].normal_form)
         word_len_list.append(len(token))
         syllable_count_list.append(count_ukr_syllables(token))
 
-    return pd.DataFrame({'token': tokens, 'lemma': lemma_list, 'grameme': grameme_list, 'word_len': word_len_list, 'syllable_count': syllable_count_list})
+    return pd.DataFrame({'token': tokens, 'lemma': lemma_list, 'grammeme': grameme_list, 'word_len': word_len_list, 'syllable_count': syllable_count_list})
 
