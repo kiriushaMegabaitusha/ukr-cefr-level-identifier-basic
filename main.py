@@ -46,6 +46,11 @@ class window(QMainWindow):
         self.save_word_table_button.setHidden(True)
         self.save_word_table_button.clicked.connect(self.save_word_table_dialog)
 
+        self.save_sentences_table_button = QPushButton(self)
+        self.save_sentences_table_button.setText('Зберегти корпус речень')
+        self.save_sentences_table_button.setHidden(True)
+        self.save_sentences_table_button.clicked.connect(self.save_sentence_table_dialog)
+
         layout = QVBoxLayout()
         layout.addWidget(self.open_label)
         layout.addWidget(self.open_button)
@@ -76,6 +81,7 @@ class window(QMainWindow):
             self.analyze_button.setEnabled(True)
 
     def save_report_dialog(self):
+        global report
         filename = QFileDialog.getSaveFileName(
             self,
             "Оберіть місце збереження звіту",
@@ -84,7 +90,7 @@ class window(QMainWindow):
         )
         if filename[0]:
             with open(filename[0], 'w', encoding='utf-8') as f:
-                f.write('Hello world!')
+                f.write(report)
             self.save_label.setText(filename[0])
             self.save_label.setHidden(False)
 
@@ -96,6 +102,20 @@ class window(QMainWindow):
             "Table files (*.csv)"
         )
         if filename[0]:
+            word_table.to_csv(filename[0])
+            self.save_label.setText(filename[0])
+            self.save_label.setHidden(False)
+
+    def save_sentence_table_dialog(self):
+        global sent_table
+        filename = QFileDialog.getSaveFileName(
+            self,
+            "Оберіть місце збереження корпусу речень",
+            "",
+            "Table files (*.csv)"
+        )
+        if filename[0]:
+            sent_table.to_csv(filename[0])
             self.save_label.setText(filename[0])
             self.save_label.setHidden(False)
 

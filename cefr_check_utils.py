@@ -1,6 +1,5 @@
 # dictionary of grammemes
 
-
 grammemes_dict = {
     'A1': [['NOUN', 'sing'], ['NOUN', 'plur', 'nomn'], ['NOUN', 'accs', 'sing'], ['NOUN', 'loct', 'sing'],
            ['NOUN', 'voct'], ['ADJF', 'sing'], ['ADJF', 'plur'], ['ADJF', 'nomn'], ['ADJF', 'accs'], ['ADJF', 'loct'],
@@ -40,22 +39,22 @@ def check_grammemes_level(df):
         temp_level_list = []
         # check grammemes level
         for grammeme in grammemes_dict['A1']:
-            if grammeme in df['grammeme'][index]:
+            if set(grammeme) in df['grammeme'][index]:
                 temp_level_list.append(1)
         for grammeme in grammemes_dict['A2']:
-            if grammeme in df['grammeme'][index]:
+            if set(grammeme) in df['grammeme'][index]:
                 temp_level_list.append(2)
         for grammeme in grammemes_dict['B1']:
-            if grammeme in df['grammeme'][index]:
+            if set(grammeme) in df['grammeme'][index]:
                 temp_level_list.append(3)
         for grammeme in grammemes_dict['B2']:
-            if grammeme in df['grammeme'][index]:
+            if set(grammeme) in df['grammeme'][index]:
                 temp_level_list.append(4)
         for grammeme in grammemes_dict['C1']:
-            if grammeme in df['grammeme'][index]:
+            if set(grammeme) in df['grammeme'][index]:
                 temp_level_list.append(5)
         for grammeme in grammemes_dict['C2']:
-            if grammeme in df['grammeme'][index]:
+            if set(grammeme) in df['grammeme'][index]:
                 temp_level_list.append(6)
         # check lemmas level
         for lemma in lemmas_dict['A2']:
@@ -81,15 +80,21 @@ def check_grammemes_level(df):
     return df.assign(cefr_level=level_list)
 
 
+from statistics import mean, mode
+
+
 def interpret_cefr_list(level_list):
     """
     create a dictionary of max, average and mode interpretations of level lists
     :param level_list: list of level indices converted to integer values
     :return: dictionary of max, average and mode interpretations
     """
+    level_list_no_zeros = list(filter(lambda x: x != 0, level_list))
+    if not level_list_no_zeros:
+        level_list_no_zeros.append(1)
     interpretation_list = {
         'max': max(level_list),
-        'mode': max(level_list, key=level_list.count),
-        'avg': round(sum(level_list) / len(level_list))
+        'mode': mode(level_list_no_zeros),
+        'avg': mean(level_list_no_zeros)
     }
     return interpretation_list

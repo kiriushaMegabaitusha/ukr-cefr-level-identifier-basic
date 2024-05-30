@@ -22,7 +22,7 @@ def Flesh_Kincaid_grade_level(sentence_count, word_count, syllable_count):
 
 def interpret_ARI(index):
     rounded_index = round(index)
-    if rounded_index == 2 or rounded_index == 1:
+    if rounded_index == 2 or rounded_index <= 1:
         return 'A1'
     elif rounded_index == 3 or rounded_index == 4:
         return 'A2'
@@ -32,10 +32,8 @@ def interpret_ARI(index):
         return 'B2'
     elif rounded_index == 11 or rounded_index == 12:
         return 'C1'
-    elif rounded_index == 13 or rounded_index == 14:
+    elif rounded_index >= 13:
         return 'C2'
-    else:
-        return '?'
 
 
 def interpret_Flesh_Kincaid_grade(index):
