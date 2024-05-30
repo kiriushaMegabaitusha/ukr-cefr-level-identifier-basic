@@ -119,6 +119,7 @@ class window(QMainWindow):
             len(word_table),
             word_table['syllable_count'].sum()
         ))
+
         word_table = cefr_check_utils.check_grammemes_level(word_table)
         grammeme_level_interpretation = cefr_check_utils.interpret_cefr_list(word_table['cefr_level'])
 

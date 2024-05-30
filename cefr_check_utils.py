@@ -8,12 +8,12 @@ grammemes_dict = {
     'A2': [['NOUN'], ['ADJF', 'sing'], ['ADJF', 'plur'], ['NPRO', 'pers'], ['NPRO'], ['VERB', 'pres'], ['VERB', 'pres'],
            ['VERB', 'past'], ['VERB', 'futr'], ['ADJF', 'COMP'], ['ADJF', 'Supr'], ['ADJF', 'COMP'], ['ADJF', 'Supr']],
     'B1': [['NOUN'], ['ADJF'], ['NUMR'], ['NPRO'], ['VERB', 'Refl', 'pres'], ['VERB', 'pres'], ['VERB', 'past', 'impf'],
-           ['VERB', 'past', 'perf'], ['VERB', 'futr', 'impf'], ['VERB', 'futr', 'perf'], ['VERB' 'impr'],
-           ['ADJF' 'COMP'], ['ADJF' 'Supr'], ['ADVB' 'COMP'], ['ADVB' 'Supr']],
-    'B2': [['NOUN'], ['NOUN' 'Abbr'], ['ADJF'], ['VERB' 'impf', 'pres'], ['VERB' 'impf', 'futr'], ['VERB', 'pres'],
-           ['VERB', 'futr'], ['VERB' 'perf'], ['VERB' 'impr'], ['ADJF' 'COMP'], ['ADJF' 'Supr'], ['ADVB' 'COMP'],
-           ['ADVB' 'Supr']],
-    'C1': [['NOUN'], ['NOUN' 'Abbr'], ['ADJF'], ['ADJF' 'COMP'], ['ADJF' 'Supr']],
+           ['VERB', 'past', 'perf'], ['VERB', 'futr', 'impf'], ['VERB', 'futr', 'perf'], ['VERB', 'impr'],
+           ['ADJF', 'COMP'], ['ADJF', 'Supr'], ['ADVB', 'COMP'], ['ADVB', 'Supr']],
+    'B2': [['NOUN'], ['NOUN', 'Abbr'], ['ADJF'], ['VERB', 'impf', 'pres'], ['VERB', 'impf', 'futr'], ['VERB', 'pres'],
+           ['VERB', 'futr'], ['VERB', 'perf'], ['VERB', 'impr'], ['ADJF', 'COMP'], ['ADJF', 'Supr'], ['ADVB', 'COMP'],
+           ['ADVB', 'Supr']],
+    'C1': [['NOUN'], ['NOUN', 'Abbr'], ['ADJF'], ['ADJF', 'COMP'], ['ADJF', 'Supr']],
     'C2': [['NOUN'], ['ADJF'], ['NPRO']]
 }
 
