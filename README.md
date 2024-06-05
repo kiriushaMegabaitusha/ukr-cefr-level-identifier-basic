@@ -23,16 +23,3 @@ Forks are much welcomed. Would be glad to see what would emerge.
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
-## Citation
-
-```
-@phdthesis{__2024,
-	address = {Київ},
-	type = {Кваліфікаційна робота бакалавра},
-	title = {Автоматичне визначення рівня {CEFR} українськомовних текстів та створення рівневого за шкалою {CEFR} корпусу текстів УМІ},
-	school = {Київський національний університет імені Тараса Шевченка},
-	author = {Ясуда, Кійохіко-Кирило},
-	year = {2024},
-}
-```
