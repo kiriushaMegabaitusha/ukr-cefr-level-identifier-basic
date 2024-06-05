@@ -5,7 +5,7 @@ This program is a simple app with a GUI to roughly determine the CEFR levels of 
 ## Instalation
 
 1. Clone repository or download the code files.
-2. Install requirements.txt
+2. Install `requirements.txt`
 
 ## Usage
 
