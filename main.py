@@ -60,6 +60,7 @@ class window(QMainWindow):
         layout.addWidget(self.save_report_button)
         layout.addWidget(self.save_label)
         layout.addWidget(self.save_word_table_button)
+        layout.addWidget(self.save_sentences_table_button)
 
         container = QWidget(self)
         container.setLayout(layout)
@@ -164,6 +165,7 @@ class window(QMainWindow):
 
         self.save_report_button.setHidden(False)
         self.save_word_table_button.setHidden(False)
+        self.save_sentences_table_button.setHidden(False)
 
 
 if __name__ == '__main__':
